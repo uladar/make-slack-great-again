@@ -1,4 +1,3 @@
-
 name: Build msga Intel
 
 on:
@@ -34,8 +33,8 @@ jobs:
       - name: Verify Intel binary
         run: |
           file build/msga.app/Contents/MacOS/msga
-          lipo -verify_arch x86_64 \
-            build/msga.app/Contents/MacOS/msga
+          lipo build/msga.app/Contents/MacOS/msga \
+            -verify_arch x86_64
 
       - name: Package app
         run: |
@@ -47,3 +46,4 @@ jobs:
         with:
           name: msga-intel
           path: msga-intel.zip
+          if-no-files-found: error
